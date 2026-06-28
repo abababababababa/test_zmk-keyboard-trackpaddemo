@@ -1,0 +1,72 @@
+#include <behaviors.dtsi>
+
+/ {
+    chosen {
+        zmk,kscan = &mock_kscan;
+    };
+
+    mock_kscan: mock_kscan_0 {
+        compatible = "zmk,kscan-mock";
+        columns = <0>;
+        rows = <0>;
+        events = <>;
+    };
+
+    trackpad_listener: trackpad_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackpad>;
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+        default_layer {
+            bindings = <&none>;
+        };
+    };
+};
+
+&pinctrl {
+    my_i2c0_default: my_i2c0_default {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 1, 14)>,
+                    <NRF_PSEL(TWIM_SCL, 1, 15)>;
+            bias-pull-up;
+        };
+    };
+
+    my_i2c0_sleep: my_i2c0_sleep {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 1, 14)>,
+                    <NRF_PSEL(TWIM_SCL, 1, 15)>;
+            low-power-enable;
+        };
+    };
+};
+
+&i2c0 {
+   status = "okay";
+    clock-frequency = <I2C_BITRATE_FAST>;
+    pinctrl-0 = <&my_i2c0_default>;
+    pinctrl-1 = <&my_i2c0_sleep>;
+    pinctrl-names = "default", "sleep";
+
+    trackpad: trackpad@74 {
+        compatible = "azoteq,tps43";
+        reg = <0x74>;
+        status = "okay";
+        rst-gpios = <&gpio1 13 GPIO_ACTIVE_HIGH>;
+        rdy-gpios = <&gpio1 12 GPIO_ACTIVE_HIGH>;
+        enable-power-management;
+        report-rate-lp2 = <640>;
+        scroll-angle = <30>;
+        sensitivity = <100>;
+        scroll-sensitivity = <100>;
+        filter-settings=<0x0B>;
+        scroll;
+        two-finger-tap;
+        single-tap;
+        press-and-hold;
+        switch-xy;
+        invert-scroll-y;
+    };
+};

@@ -1,0 +1,17 @@
+if SHIELD_TRACKPADDEMO
+
+CONFIG_ZMK_BOARD_COMPAT=y
+
+config ZMK_KEYBOARD_NAME
+    default "TRACKPAD DEMO"
+
+config I2C
+    default y
+
+config INPUT_TPS43
+    default y
+
+config ZMK_POINTING
+    default y
+
+endif

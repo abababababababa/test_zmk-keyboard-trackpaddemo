@@ -1,0 +1,16 @@
+manifest:
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+    - name: geeksville
+      url-base: https://github.com/geeksville
+  projects:
+    - name: zmk
+      remote: zmkfirmware
+      revision: main
+      import: app/west.yml
+    - name: zmk_driver_azoteq
+      remote: geeksville
+      revision: master
+  self:
+    path: config
