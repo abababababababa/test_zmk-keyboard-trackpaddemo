@@ -67,8 +67,8 @@
         single-tap;
         switch-xy;
         invert-scroll-y;
-        tap-time = <150>; //暫定で150
-        hold-time = <500>; //暫定で500
+        tap-time = <40>; //暫定で150
+        hold-time = <800>; //暫定で500
         idle-sleep;
     };
 };
