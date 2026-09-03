@@ -65,7 +65,6 @@
         scroll;
         two-finger-tap;
         single-tap;
-        press-and-hold;
         switch-xy;
         invert-scroll-y;
         tap-time = <150>; //暫定で150
