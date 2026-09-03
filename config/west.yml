@@ -2,15 +2,15 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: geeksville
-      url-base: https://github.com/geeksville
+    - name: beekeeb
+      url-base: https://github.com/beekeeb
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: main
       import: app/west.yml
     - name: zmk_driver_azoteq
-      remote: geeksville
+      remote: beekeeb
       revision: master
   self:
     path: config

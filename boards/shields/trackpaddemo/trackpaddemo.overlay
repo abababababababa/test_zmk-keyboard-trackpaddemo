@@ -65,9 +65,11 @@
         scroll;
         two-finger-tap;
         single-tap;
-        tapping-term-ms = <100>;
         press-and-hold;
         switch-xy;
         invert-scroll-y;
+        tap-time = <150>; //暫定で150
+        hold-time = <500>; //暫定で500
+        idle-sleep;
     };
 };
