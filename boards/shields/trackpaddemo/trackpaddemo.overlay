@@ -64,10 +64,9 @@
         filter-settings=<0x0B>;
         scroll;
         two-finger-tap;
-        single-tap;
         switch-xy;
         invert-scroll-y;
-        tap-time = <40>; //暫定で150
+        tap-time = <20>; //暫定で150
         hold-time = <800>; //暫定で500
         idle-sleep;
     };
