@@ -54,7 +54,7 @@
         compatible = "azoteq,tps43";
         reg = <0x74>;
         status = "okay";
-        rst-gpios = <&gpio1 14 GPIO_ACTIVE_HIGH>;
+        rst-gpios = <&gpio1 14 GPIO_ACTIVE_LOW>;
         rdy-gpios = <&gpio1 15 GPIO_ACTIVE_HIGH>;
 
         /* これが今回のキモ:
