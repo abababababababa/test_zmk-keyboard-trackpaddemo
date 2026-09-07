@@ -12,9 +12,9 @@
         events = <>;
     };
 
-    trackpad_listener: trackpad_listener {
+    tps43_input: tps43_input {
         compatible = "zmk,input-listener";
-        device = <&trackpad>;
+        device = <&tps43>;
     };
 
     keymap {
@@ -45,25 +45,33 @@
 
 &i2c0 {
     status = "okay";
-    clock-frequency = <I2C_BITRATE_FAST>;
     pinctrl-0 = <&my_i2c0_default>;
     pinctrl-1 = <&my_i2c0_sleep>;
     pinctrl-names = "default", "sleep";
-
-    trackpad: trackpad@74 {
-        compatible = "azoteq,tps43";
-        reg = <0x74>;
+    tps43: iqs5xx@74 {
         status = "okay";
-        rst-gpios = <&gpio1 14 GPIO_ACTIVE_LOW>;
+        compatible = "azoteq,iqs5xx";
+        reg = <0x74>;
+
+        reset-gpios = <&gpio1 14 GPIO_ACTIVE_HIGH>;
         rdy-gpios = <&gpio1 15 GPIO_ACTIVE_HIGH>;
 
-        /* これが今回のキモ:
-         * single-tap か swipes のどちらかを true にしないと
-         * SINGLE_FINGER_GESTURES レジスタが書き込まれず、
-         * チップ工場出荷時デフォルト(press-and-hold有効)のまま動く。
-         * press-and-hold は絶対に書かない = ドラッグ用ジェスチャーをOFFにする。
+        /*
+         * Potentially non-exhaustive list of configuration options.
+         * See: dts/bindings/input/azoteq,iqs5xx-common.yaml for a full list.
          */
-        single-tap;
+        one-finger-tap;
+        press-and-hold;
+        press-and-hold-time = <250>;
+        two-finger-tap;
+
+        scroll;
+        natural-scroll-y;
+        natural-scroll-x;
+
+        bottom-beta = <5>;
+        stationary-threshold = <5>;
+
         switch-xy;
     };
 };
