@@ -8,9 +8,6 @@ config ZMK_KEYBOARD_NAME
 config I2C
     default y
 
-config INPUT_TPS43
-    default y
-
 config ZMK_POINTING
     default y
 
