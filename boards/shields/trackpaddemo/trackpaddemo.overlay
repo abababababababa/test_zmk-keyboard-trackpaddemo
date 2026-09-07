@@ -53,7 +53,7 @@
         compatible = "azoteq,iqs5xx";
         reg = <0x74>;
 
-        reset-gpios = <&gpio1 14 GPIO_ACTIVE_HIGH>;
+        reset-gpios = <&gpio1 14 GPIO_ACTIVE_LOW>;
         rdy-gpios = <&gpio1 15 GPIO_ACTIVE_HIGH>;
 
         /*
