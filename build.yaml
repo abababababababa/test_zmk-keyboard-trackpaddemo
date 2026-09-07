@@ -2,3 +2,5 @@
 include:
   - board: xiao_ble//zmk
     shield: trackpaddemo
+    snippet: zmk-usb-logging
+    artifact-name: trackpaddemo-usb-logging
