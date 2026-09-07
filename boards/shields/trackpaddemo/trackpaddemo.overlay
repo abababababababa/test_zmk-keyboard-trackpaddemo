@@ -44,7 +44,7 @@
 };
 
 &i2c0 {
-   status = "okay";
+    status = "okay";
     clock-frequency = <I2C_BITRATE_FAST>;
     pinctrl-0 = <&my_i2c0_default>;
     pinctrl-1 = <&my_i2c0_sleep>;
@@ -56,18 +56,14 @@
         status = "okay";
         rst-gpios = <&gpio1 14 GPIO_ACTIVE_HIGH>;
         rdy-gpios = <&gpio1 15 GPIO_ACTIVE_HIGH>;
-        enable-power-management;
-        report-rate-lp2 = <640>;
-        scroll-angle = <30>;
-        sensitivity = <100>;
-        scroll-sensitivity = <100>;
-        filter-settings=<0x0B>;
-        scroll;
-        two-finger-tap;
+
+        /* これが今回のキモ:
+         * single-tap か swipes のどちらかを true にしないと
+         * SINGLE_FINGER_GESTURES レジスタが書き込まれず、
+         * チップ工場出荷時デフォルト(press-and-hold有効)のまま動く。
+         * press-and-hold は絶対に書かない = ドラッグ用ジェスチャーをOFFにする。
+         */
+        single-tap;
         switch-xy;
-        invert-scroll-y;
-        tap-time = <150>; //暫定で150
-        hold-time = <80000>; //暫定で500
-        tap-distance = <30>;
     };
 };
