@@ -11,6 +11,6 @@ manifest:
       import: app/west.yml
     - name: zmk-driver-azoteq-iqs5xx
       remote: AYM1607
-      revision: master
+      revision: main
   self:
     path: config
