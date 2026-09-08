@@ -73,5 +73,6 @@
         stationary-threshold = <5>;
 
         /*switch-xy;*/
+        flip-x;
     };
 };
