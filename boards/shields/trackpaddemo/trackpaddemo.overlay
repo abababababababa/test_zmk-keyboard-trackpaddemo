@@ -62,7 +62,7 @@
          */
         one-finger-tap;
         press-and-hold;
-        press-and-hold-time = <150>;
+        press-and-hold-time = <500>;
         two-finger-tap;
 
         scroll;
@@ -70,9 +70,10 @@
         natural-scroll-x;
 
         bottom-beta = <5>;
-        stationary-threshold = <5>;
+        stationary-threshold = <10>;
 
-        /*switch-xy;*/
+        switch-xy;
         flip-x;
+        flip-y;
     };
 };
